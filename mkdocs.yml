@@ -1,0 +1,72 @@
+site_name: Programación
+site_url: http://manuedugva.github.io/prg/
+theme:
+  name: material
+  font:
+    text: Open Sans
+    code: Red Hat Mono
+  logo: ./assets/Cheste.png
+  favicon: ./assets/Cheste.png
+  features:
+    - navigation.footer
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+  palette:
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Dark mode
+      primary: blue
+      accent: deep purple
+
+    # Light Mode
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Light mode
+      primary: cyan
+      accent: blue grey
+markdown_extensions:
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - attr_list
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+extra:
+  social:
+    - icon: simple/youtube
+      link: https://youtube.com/@ciclosformativosinfo
+    - icon: simple/bluesky
+      link: https://bsky.app/profile/malsonvalencia.bsky.social
+copyright: Copyright &copy; 2025 Manu Romero
