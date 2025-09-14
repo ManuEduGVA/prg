@@ -1191,6 +1191,7 @@ Los comentarios son fragmentos de código que no se ejecutan. Se usan para docum
 
 ## 2. Algoritmo
 Un algoritmo es una secuencia ordenada de pasos que conducen a la solución de un problema. Tienen tres características:
+
 - Son precisos en el orden de realización de los pasos.
 - Están bien definidos de forma que usando un algoritmo varias veces con los mismos datos, dé la misma solución.
 - Son finitos, deben acabarse en algún momento.
@@ -1215,6 +1216,7 @@ flowchart TD
 
 ## 3. Programación Estructurada
 La programación estructurada es un paradigma de programación que se basa en la estructuración de los programas en tres elementos básicos:
+
 - Secuencia: Los programas se ejecutan secuencialmente, es decir, una instrucción tras otra.
 - Condicionales: Los programas pueden ejecutar una parte de código u otra dependiendo de una condición.
 - Repetitivas: Los programas pueden ejecutar una parte de código varias veces.
