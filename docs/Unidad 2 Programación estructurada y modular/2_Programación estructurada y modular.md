@@ -5,7 +5,9 @@ UD2 Programación Estructurada y Modular. 1DAM/DAW. Curso 2025/2026.
 
 ## 1. Tipos y Operaciones
 Los tipos de datos nos sirven para clasificar nuestra información de entrada y salida y trabajar con ellos. Un tipo lo define en base al valor que puede almacenar y las operaciones que se pueden realizar con él.
+
 - Tipos simples: Se llama tipo de dato a una clase concreta de objetos o valores: Números, Caracter, Lógicos, etc.
+
 - Tipos compuestos: arrays, listas, etc, que los veremos más adelante.
 
 === "kotlin"
