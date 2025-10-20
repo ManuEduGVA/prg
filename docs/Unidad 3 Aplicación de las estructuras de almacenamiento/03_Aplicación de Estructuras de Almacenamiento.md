@@ -1590,27 +1590,42 @@ El algoritmo de Shell es una mejora del algoritmo de inserción. Su eficiencia e
 
 El algoritmo de quicksort es el algoritmo más rápido que veremos. Su eficiencia es de O(n log n). Consiste en dividir el array en dos partes, una con los elementos menores que el pivote y otra con los elementos mayores que el pivote.
 
+Veamos este ejemplo de [Wikipedia](https://es.wikipedia.org/wiki/Quicksort)
 
-```
-3 5 33 1 8 12 4 23 8
-Pivot = 8
+En el siguiente ejemplo se marcan el pivote y los índices i y j con las letras p, i y j respectivamente.
 
-3 5 8 1 4 12 8 23 33
-Pivot = 8
-Pivot = 8
+```bash
 
-3 5 4 1 8 8 12 23 33
-Pivot = 5
-Pivot = 23
-
-3 1 4 5 12 23 33
-Pivot = 1
-Pivot = 23
-
-1 3 4 23 33
-Pivot = 1
-
-1 3
+Comenzamos con la lista completa. El elemento pivote será el 4:
+ 5 - 3 - 7 - 6 - 2 - 1 - 4
+                         p
+Comparamos con el 5 por la izquierda y el 1 por la derecha.
+ 5 - 3 - 7 - 6 - 2 - 1 - 4 
+ i                   j   p
+5 es mayor que 4 y 1 es menor. Intercambiamos:
+ 1 - 3 - 7 - 6 - 2 - 5 - 4
+ i                   j   p 
+Avanzamos por la izquierda y la derecha:
+ 1 - 3 - 7 - 6 - 2 - 5 - 4
+     i           j       p 
+3 es menor que 4: avanzamos por la izquierda. 2 es menor que 4: nos mantenemos ahí.
+ 1 - 3 - 7 - 6 - 2 - 5 - 4
+         i       j       p 
+7 es mayor que 4 y 2 es menor: intercambiamos.
+ 1 - 3 - 2 - 6 - 7 - 5 - 4
+         i       j       p 
+Avanzamos por ambos lados:
+ 1 - 3 - 2 - 6 - 7 - 5 - 4
+            iyj          p 
+En este momento termina el ciclo principal, porque los índices se cruzaron. Ahora intercambiamos lista[i] con lista[p] (pasos 16-18):
+ 1 - 3 - 2 - 4 - 7 - 5 - 6
+             p 
+Aplicamos recursivamente a la sublista de la izquierda (índices 0 - 2). Tenemos lo siguiente:
+ 1 - 3 - 2 
+1 es menor que 2: avanzamos por la izquierda. 3 es mayor: avanzamos por la derecha. Como se intercambiaron los índices termina el ciclo. Se intercambia lista[i] con lista[p]:
+ 1 - 2 - 3 
+El mismo procedimiento se aplicará a la otra sublista. Al finalizar y unir todas las sublistas queda la lista inicial ordenada en forma ascendente.
+ 1 - 2 - 3 - 4 - 5 - 6 - 7
 ```
 
 
@@ -1657,7 +1672,10 @@ Pivot = 1
 === "Java"
 
 
-    ```java
+```java
+import java.util.Arrays;
+public class Main {
+
     public static int pivote(int[] array, int izq, int der) {
         int i = izq;
         int j = der;
@@ -1688,7 +1706,16 @@ Pivot = 1
             quicksort(array, piv + 1, der);
         }
     }
-    ```
+
+    public static void main(String[] args) {
+       int[] vector = {5, 3, 7, 6, 2, 1, 4};
+        quicksort(vector, 0, vector.length - 1);
+        System.out.println(Arrays.toString(vector));
+
+    }
+}
+
+```
 
 
 
@@ -1795,6 +1822,7 @@ La búsqueda secuencial o lineal consiste en recorrer el vector hasta devolver e
 
 En la búsqueda binaria partimos de un array ordenado. Su eficiencia es de O(log n). Se compara el dato buscado con el elemento en el centro del vector.
 
+Definición de [Wikipedia](https://es.wikipedia.org/wiki/B%C3%BAsqueda_binaria)
 
 **Elemento buscado:** 12
 
