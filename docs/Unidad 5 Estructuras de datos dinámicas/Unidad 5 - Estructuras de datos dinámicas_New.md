@@ -2209,20 +2209,6 @@ Cuando en Java se produce una excepción se crear un objeto de una determina cla
 
 A continuación vamos a mostrar un ejemplo de como al hacer una división entre cero, se produce una excepción.
 
-=== "Java"
-
-    ```java
-    public class EjemploExcepcion {
-        public static void main(String[] args) {
-            System.out.println("ANTES DE HACER LA DIVISIÓN");
-            int resultado = 10 / 0;  // Esto lanzará ArithmeticException
-            System.out.println("DESPUES DE HACER LA DIVISIÓN");
-        }
-    }
-    ```
-
-
-
 === "Kotlin"
 
     ```kotlin
@@ -2403,6 +2389,121 @@ Dentro de una misma estructura podemos definir todas las excepciones que queramo
     finally:
         print("Esto se ejecuta siempre")
     ```
+
+
+=== "Java"
+
+    ```java
+    public class EjemploExcepcion {
+        public static void main(String[] args) {
+            System.out.println("ANTES DE HACER LA DIVISIÓN");
+            int resultado = 10 / 0;  // Esto lanzará ArithmeticException
+            System.out.println("DESPUES DE HACER LA DIVISIÓN");
+        }
+    }
+    ```
+##### Jerarquía de Excepciones en Java
+
+```mermaid
+---
+title: Jerarquía de Excepciones en Java
+---
+classDiagram
+    Throwable <|-- Exception
+    Throwable <|-- Error
+    Exception <|-- RuntimeException
+    Exception <|-- IOException
+    Exception <|-- SQLException
+    
+    class Throwable {
+        <<class>>
+        +getMessage() String
+        +getCause() Throwable
+        +printStackTrace() void
+        +fillInStackTrace() Throwable
+    }
+    
+    class Exception {
+        <<class>>
+        #Exception()
+        #Exception(String message)
+        #Exception(String message, Throwable cause)
+    }
+    
+    class Error {
+        <<class>>
+        #Error()
+        #Error(String message)
+        +OutOfMemoryError
+        +StackOverflowError
+        +VirtualMachineError
+    }
+    
+    class RuntimeException {
+        <<class>>
+        #RuntimeException()
+        #RuntimeException(String message)
+        +NullPointerException
+        +ArrayIndexOutOfBoundsException
+        +IllegalArgumentException
+        +ArithmeticException
+    }
+    
+    class IOException {
+        <<class>>
+        #IOException()
+        #IOException(String message)
+        +FileNotFoundException
+        +EOFException
+    }
+    
+    class SQLException {
+        <<class>>
+        #SQLException()
+        #SQLException(String message)
+    }
+    
+    note for RuntimeException "Excepciones NO verificadas\n(Unchecked)"
+    note for Exception "Excepciones verificadas\n(Checked) - excepto RuntimeException"
+
+```
+
+##### Flujo de Manejo de Excepciones con try-catch-finally
+
+```mermaid
+---
+title: Flujo de Manejo de Excepciones con try-catch-finally
+---
+flowchart TD
+    A[Inicio del bloque try] --> B[Ejecutar código]
+    B --> C{¿Ocurre excepción?}
+    
+    C -->|No| D[Continúa ejecución normal]
+    D --> E[Fin bloque try]
+    E --> F[Ejecutar bloque finally]
+    F --> G[Continuar después de try-catch]
+    
+    C -->|Sí| H[Tipo de excepción]
+    H --> I{¿Hay catch que coincida?}
+    
+    I -->|Sí| J[Ejecutar bloque catch correspondiente]
+    J --> K[¿Hay más catches?]
+    K -->|Sí| L{¿Coincide siguiente catch?}
+    L -->|No| K
+    L -->|Sí| J
+    
+    K -->|No| F
+    
+    I -->|No| M[Propagar excepción al método llamador]
+    M --> N[¿Finally ejecutado?]
+    N -->|No| F
+    N -->|Sí| O[Excepción no manejada<br>Termina programa o propaga]
+    
+    F --> P[¿Excepción en finally?]
+    P -->|Sí| Q[Finally prevalece sobre excepción original]
+    P -->|No| R[Continuar flujo normal]
+
+```
 
 
 
