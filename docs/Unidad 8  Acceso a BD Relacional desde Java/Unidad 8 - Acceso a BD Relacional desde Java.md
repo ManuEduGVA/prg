@@ -732,7 +732,7 @@ Para no ir creando objetos de conexiones innecesarios, vamos a usar el patrón *
 La idea del patrón **Singleton** es crear en la clase un método que permite crear una instancia del objeto solo si todavía no existe ninguna. Para asegurar que la clase no puede ser instanciada nuevamente, se regula el alcance/visibilidad del constructor, cambiando el modificador de acceso a protegido o privado.
 
 
-![singleton](./img/singleton.PNG)
+![singleton](./img/singleton.png)
 
 ### 8.1 Implementación del Singleton para la conexión
 
@@ -842,7 +842,7 @@ Con el permiso de los más puristas, un DAO no es otra cosa que un "adaptador" o
 La pregunta que surge ahora es la siguiente: ¿cómo realizamos esta traducción? Pues a través de una clase intermedia, que se encargará de "calcar" la estructura de una tabla de la fuente de datos y almacenará de forma temporal los datos de éste, al que llamaremos DTO o *Data Transfer Object*. Este DTO nos viene representado en nuestros POJO's.
 
 
- ![dao](./img/dao.PNG)
+ ![dao](./img/dao.png)
 
 A partir de este momento, nuestra aplicación "entregará" la información que quiera compartir con la fuente de datos al DAO encapsulada en un POJO/DTO. El DAO entonces extraerá la información de esa cápsula y la codificará de forma que la fuente de datos la entienda (por ejemplo, escribiendo una sentencia `SELECT` e instanciando los objetos necesarios para comunicarse con la base de datos).
 
@@ -877,7 +877,7 @@ La base de datos que vamos a usar es `ventas.sql`. Los pasos a seguir son:
 3. Crear 3 paquetes en el proyecto denominados `POJO`, `DAO` y `Main`, de forma que separaremos en varias capas la aplicación.
 
   
-    ![DAO_Intellij1](./img/daoDAO_Intellij11.PNG)
+    ![DAO_Intellij1](./img/DAO_Intellij1.PNG)
    
 
 4. Tras ello, creamos una clase dentro del paquete `Main` que se denominará `Main.java`, que será nuestro programa principal.
@@ -931,7 +931,7 @@ public class ConexionBD {
 
 1. Ya tenemos la conexión a la base de datos para poder interactuar con ella. A continuación vamos a mapear una de las tablas de la base de datos en un *POJO* o *entidad*, de forma que serán objetos de tipo *POJO* los que naveguen entre las distintas capas, tal y como indicaba la imagen de la arquitectura de la aplicación. En este caso creamos en el paquete `POJO` la clase `Cliente.java`. Siguiendo la estructura que vemos a continuación de la tabla en la BD, la clase quedará de la siguiente forma:
 
-   ![dao1](./img/dao1.PNG)
+   ![dao1](./img/dao1.png)
 
 
 
@@ -1508,4 +1508,4 @@ public class FactoriaDAO {
 
 1. Con estos cambios que hemos realizado se ha quedado implementado perfectamente el patrón DAO, de forma muy optimizada y con un interface que publica sus métodos. La organización del proyecto queda de la siguiente forma:
 
-![Final2](./img/Final2.PNG)
+![Final2](./img/Final2.png)

